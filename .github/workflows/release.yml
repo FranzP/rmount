@@ -60,7 +60,7 @@ jobs:
           $zipName = "Rmount-Release-${{ github.ref_name }}.zip"
 
           # Prüfen, ob die Dateien existieren (optionaler Safety-Check)
-          if (Test-Path $exePath -And Test-Path $iniPath) {
+          if (Test-Path $exePath -and Test-Path $iniPath) {
               Compress-Archive -Path $exePath, $iniPath -DestinationPath $zipName -Force
               echo "ZIP erfolgreich erstellt: $zipName"
               echo "zip_path=$zipName" >> $env:GITHUB_OUTPUT

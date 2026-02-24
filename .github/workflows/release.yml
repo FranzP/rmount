@@ -4,6 +4,16 @@ on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch: # Ermöglicht den manuellen Start
+    inputs:
+      version_name:
+        description: 'Versionsnummer (v1.0.5)'
+        required: true
+        default: 'v1.0.0'
+      is_prerelease:
+        description: 'Pre-Release?'
+        type: boolean
+        default: false
       
 jobs:
 

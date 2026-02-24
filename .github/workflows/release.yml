@@ -58,7 +58,7 @@ jobs:
         # Definition der Pfade (relativ zum Root des Repos)
           $exePath = "src/Rmount/bin/Release/net48/Rmount.exe"
           $iniPath = "docs/Rmount.ini.example"
-          $zipName = "Rmount-Release-${{ github.ref_name }}.zip"
+          $zipName = "${{ github.workspace }}/Rmount-Release-${{ github.ref_name }}.zip"
 
           # Prüfen, ob die Dateien existieren (optionaler Safety-Check)
           if ((Test-Path $exePath) -and (Test-Path $iniPath)) {

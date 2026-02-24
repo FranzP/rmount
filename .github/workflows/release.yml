@@ -75,8 +75,8 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         files: |
-          "${{ steps.zip.outputs.zip_path }}"
-        body: "Automatisch erstellter Release für Tag ${{ github.ref_name }}"
+          ${{ steps.zip.outputs.zip_path }}
+        body: "Release for ${{ github.ref_name }}"
         draft: true
         prerelease: false
       env:

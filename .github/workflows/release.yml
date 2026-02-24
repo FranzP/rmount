@@ -52,6 +52,7 @@ jobs:
         Configuration: ${{ matrix.configuration }}
 
     - name: Archive Files
+      id: zip
       shell: pwsh
       run: |
         # Definition der Pfade (relativ zum Root des Repos)
@@ -68,12 +69,13 @@ jobs:
               Write-Error "Eine der Dateien wurde nicht gefunden!"
               exit 1
           }
+          echo "zip_path=$zipName" >> $env:GITHUB_OUTPUT
       
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
       with:
         files: |
-          "Rmount-Release-${{ github.ref_name }}.zip"
+          "${{ steps.zip.outputs.zip_path }}"
         body: "Automatisch erstellter Release für Tag ${{ github.ref_name }}"
         draft: true
         prerelease: false
